@@ -1,0 +1,15 @@
+{
+  "title": "Reveal my location!",
+  "description": "Help kuro find his current location",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the command that shows the current working directory?"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

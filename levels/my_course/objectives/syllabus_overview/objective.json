@@ -1,0 +1,33 @@
+{
+  "title": "Answer some questions regarding the syllabus",
+  "description": "Read the syllabus then answer some questions",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "textarea",
+      "placeholder": "type your answer here",
+      "label": "What is the purpose of the syllabus?"
+    },
+    {
+      "name": "answer2",
+      "type": "textarea",
+      "placeholder": "type your answer here",
+      "label": "What are some of the course descriptions?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Who is your professor?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the required textbook?"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

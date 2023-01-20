@@ -1,0 +1,22 @@
+{
+  "title": "Create a folder",
+  "description": "Create a folder using the command",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "Your answer here",
+      "label": "What is the command to change the directory?"
+    }
+    ,
+    {
+      "name": "desktop_path",
+      "type": "text",
+      "placeholder": "the absolute path to the desktop folder",
+      "label": "Absolute path to the desktop"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

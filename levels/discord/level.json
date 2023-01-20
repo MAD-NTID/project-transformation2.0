@@ -1,0 +1,19 @@
+{
+  "title": "02-Join the Discord",
+  "description": "Communication is very important in this course. In order to success, you have to keep up with what is happening.",
+  "questTitle": "Join the Discord",
+  "questDescription": "Discord is the best place to remain in constant communication with your professor and classmate",
+  "mission_icon": "discord.png",
+  "is_mission": true,
+  "prereqs": ["my_course.syllabus_overview", "my_course.requirements", "my_course.gradings"],
+  "priority": 2,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book."
+  },
+  "objectives": ["join"]
+}

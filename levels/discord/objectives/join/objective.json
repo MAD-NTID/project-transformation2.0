@@ -1,0 +1,27 @@
+{
+  "title": "Join the discord",
+  "description": "",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What are some of the channels you see on the course's discord?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the secret code on discord?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Why do we use discord for this course?"
+    }
+  ],
+  "rewards": {
+    "xp": 350
+  }
+}

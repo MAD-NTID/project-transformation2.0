@@ -1,0 +1,15 @@
+{
+  "title": "Create a file",
+  "description": "Create a file using the command line",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you created the file?"
+    }
+  ],
+  "rewards": {
+    "xp": 600
+  }
+}

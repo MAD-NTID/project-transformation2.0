@@ -1,0 +1,18 @@
+{
+  "title": "03- Intro to Commands",
+  "description": "Help Kuro master using the commands",
+  "questTitle": "Mastering the basic of commands",
+  "questDescription": "",
+  "mission_icon": "command.gif",
+  "is_mission": true,
+  "priority": 3,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book. "
+  },
+  "objectives": ["create_a_file", "create_a_folder","install_bash"]
+}

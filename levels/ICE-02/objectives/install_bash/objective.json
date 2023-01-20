@@ -1,0 +1,15 @@
+{
+  "title": "Install bash",
+  "description": "Installing the command line",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "Y/N",
+      "label": "Did you installed Bash?"
+    }
+  ],
+  "rewards": {
+    "xp": 400
+  }
+}

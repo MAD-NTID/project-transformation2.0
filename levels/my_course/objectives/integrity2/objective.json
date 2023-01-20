@@ -1,0 +1,21 @@
+{
+  "title": "Understanding Academic Integrity",
+  "description": "Help Kuro understand academic integrity policies so he can stay out of trouble and get an A in the course!!!",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the name of the company that makes TwilioQuest?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is 2 + 2? Write the numerical response below."
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

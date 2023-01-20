@@ -1,0 +1,40 @@
+{
+  "title": "Understand how the grading scales are represent",
+  "description": "",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "Your instructor is required to round up your final grade"
+    },
+    {
+      "name": "answer2",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "Range for the letter grade of C, D and F are the same as what are frequently used in other courses?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "",
+      "label": "What grade(s) represent the grade letter A?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "",
+      "label": "What average grades does the grade B+ represent?"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "",
+      "label": "What grade do you need to continue with NMAD-181 and other NMAD courses?"
+    }
+
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

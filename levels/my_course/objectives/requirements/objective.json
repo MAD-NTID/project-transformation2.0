@@ -1,0 +1,51 @@
+{
+  "title": "Help Kuro Ace the course!",
+  "description": "Kuro is determined to get an A in the course. Help him understand the requirements",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "Kuro should do well on all assignments and exams in order to maximum his chance of acing the course?"
+    },
+    {
+      "name": "answer2",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "Kuro will pass the course if he skipp an exam. There are 3 exams so he will be fine"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "Your answer here",
+      "label": "What does ICE stands for?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "Your answer here",
+      "label": "When are ICE due?"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "",
+      "label": "When are homework assigned? <br/> A. Each Week <br/>B. Every Two Weeks <br/> C. Every 3 weeks</br> D. There are no homework in this course"
+    },
+    {
+      "name": "answer6",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "If Kuro submit my homework on the 3rd day or more after it was due, He will receive a 0 regardless if my code work and is functional "
+    },
+    {
+      "name": "answer7",
+      "type": "number",
+      "placeholder": "",
+      "label": "How many projects will Kuro be doing in this course? "
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
