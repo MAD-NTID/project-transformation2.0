@@ -208,3 +208,7 @@ async function git(command, timeout = 15)
     return runProcess(`git ${command}`, timeout, `An error occurred while running the git command ${command}`);
 }
 
+module.exports = {
+    git
+};
+

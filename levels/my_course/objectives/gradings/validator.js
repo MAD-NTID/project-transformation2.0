@@ -4,7 +4,6 @@ third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
 const assert = require("assert");
-const R = require("ramda");
 const { isTwilio, isAceGrade, isInstructorRequiredToRoundUp, isLetterCDFSameAsOtherCourses, isBPlusGrade, is75Minimum} = require("../lib/grading_helper");
 
 /*

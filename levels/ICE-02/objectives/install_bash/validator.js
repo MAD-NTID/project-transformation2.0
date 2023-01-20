@@ -4,8 +4,9 @@ third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
 const assert = require("assert");
-const R = require("ramda");
 const { checkGitBash} = require("../lib/create_a_folder_helper");
+
+//const util = require('../../../../scripts/utils');
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -22,6 +23,7 @@ module.exports = async function (helper) {
   let fullPath = "";
 
   try{
+
     checkGitBash();
   } catch(e){
     return helper.fail(`Incorrect--> ${e}`);
