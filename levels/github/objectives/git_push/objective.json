@@ -1,0 +1,15 @@
+{
+  "title": "Push",
+  "description": "Pushing the new change to Github",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "Did you push your project?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

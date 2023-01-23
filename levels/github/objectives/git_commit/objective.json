@@ -1,0 +1,15 @@
+{
+  "title": "Commit a new snapshot",
+  "description": "Commit a new snapshot and save the change locally",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "Did you commit your project?"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

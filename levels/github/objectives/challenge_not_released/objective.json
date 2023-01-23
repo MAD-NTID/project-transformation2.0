@@ -1,0 +1,15 @@
+{
+  "title": "Challenge not released",
+  "description": "Check back again later",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": ""
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

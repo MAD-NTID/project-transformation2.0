@@ -1,0 +1,15 @@
+{
+  "title": "Double Checking",
+  "description": "Double check that your project was uploaded to github",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What is the unique commit id?"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

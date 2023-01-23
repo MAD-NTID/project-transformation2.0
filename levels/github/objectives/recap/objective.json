@@ -1,0 +1,21 @@
+{
+  "title": "Testing your understanding of Git & Github",
+  "description": "This exercise will help you understand version control using git and github",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "Use comma to enter multiple answers",
+      "label": "What is Git? (Select all answers that match) <br/> A. A local repository version control software <br/>B. A software that track all code changes <br/>C. A online code collaboration platform <br/>D. World’s largest community of developers"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "Use comma to enter multiple answers",
+      "label": "What is Github? (Select all answers that match) <br/>A. Github use git <br/>B. A local cloud platform to host repositories <br/> C. A online cloud platform to host repositories <br/> D. Easily collaborate with other developers "
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

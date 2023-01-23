@@ -1,0 +1,51 @@
+{
+  "title": "How well do you know your git commands?",
+  "description": "This exercise will help you understand the different git commands",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What git command shows modified files in working a directory that are staged for your next commit. This include files to be committed, un-staged and untracked files"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What command allows you to add files to staging and tracking changes?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What command commits your changes and creates a new snapshot to your local machine?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What command will update your remote repository to the latest changes from your local machine?"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What command allows you to get the latest changes from the remote repository to your local machine?"
+    },
+    {
+      "name": "answer6",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What command allows you to download an entire repository using a URL?"
+    },
+    {
+      "name": "answer7",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "If you have a project that is not currently a git repository, what command would allow you to add git repository to the existing project?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

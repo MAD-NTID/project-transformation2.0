@@ -1,0 +1,15 @@
+{
+  "title": "Add the files for tracking",
+  "description": "git add allows you to track files",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "Did you add all of your files to be tracked for changes?"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Creating a new file in a github repository",
+  "description": "Learn how to create a new file inside a github repository",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "Did you complete the steps?"
+    }
+  ],
+  "rewards": {
+    "xp": 500
+  }
+}

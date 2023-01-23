@@ -1,0 +1,15 @@
+{
+  "title": "Tracking the git repository status",
+  "description": "git status allow you to see changes that need to be added, have not added, or changes that have been committed",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "What did you notice after running git status? <br/> A Untracked files: <br/>B Changes to be committed:"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Absolute Path for Cloned Project",
+  "description": "Creating a github account is a developer's rite of passage in the software developing world",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "your answer",
+      "label": "Using Gitbash or UNIX terminal, what is the absolute path to the repository that you cloned?"
+    }
+  ],
+  "rewards": {
+    "xp": 300
+  }
+}
