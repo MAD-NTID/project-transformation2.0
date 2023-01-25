@@ -6,8 +6,8 @@
 ```C#
 Houston...
 Sending Octocat, Github's mascot, to space is a go.
-T-minus 10, 9, 8…"
-Godspeed Octocat!"
+T-minus 10, 9, 8…
+Godspeed Octocat!
 ```
 
 - Save the file
