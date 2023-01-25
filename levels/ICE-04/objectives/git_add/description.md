@@ -1,4 +1,7 @@
 # Using Git Add
+
+## Note: Please complete the Butterfly statue & Scroll mission before attempting this mission
+
 The command ``git add`` is used to add file(s) for tracking as part of the staging changes.
 
 On the terminal, inside your Octocat2TheMoon project run the following command ``git add --all`` to add all files

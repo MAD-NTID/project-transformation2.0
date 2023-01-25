@@ -20,7 +20,7 @@ module.exports = async function (helper) {
   let project = helper.env.TQ_GITHUB_PROJECT_PATH;
 
   if(!project)
-    return helper.fail('You are missing a step, complete the create a new project and working with VSC exercise first');
+    return helper.fail('You are missing a step, butterfly statue & scroll mission first.');
   try{
     const stdout = await shell.git(`-C ${project} status`);
     console.log(stdout)

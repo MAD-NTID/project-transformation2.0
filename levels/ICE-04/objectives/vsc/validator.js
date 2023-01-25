@@ -27,7 +27,6 @@ module.exports = async function (helper) {
 
   //did they create the project?
   let projPath = path.join(clone_path, "myfile.txt");
-  console.log(fs.existsSync(projPath));
   if(!fs.existsSync(projPath))
     return helper.fail(`You didn't created the file myfile.txt`);
 
@@ -41,5 +40,5 @@ module.exports = async function (helper) {
 
 
 
-  return helper.success(`Hooray! you are the G.O.A.T! Feed da ego!!!`,  [{ name: "GITHUB_PROJECT_PATH", value: projPath }]);
+  return helper.success(`Hooray! you are the G.O.A.T! Feed da ego!!!`,  [{ name: "GITHUB_PROJECT_PATH", value: clone_path }]);
 };
