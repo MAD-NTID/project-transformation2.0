@@ -22,7 +22,9 @@ module.exports = async function (helper) {
   if(!project)
     return helper.fail('You are missing a step, complete the create a new project and working with VSC exercise first');
   try{
+    project = project.replace(/(\s+)/g, '\\$1');
     const stdout = await shell.git(`-C ${project} status`);
+    
     if(stdout.toLowerCase().includes('your branch is up to date with'))
       return helper.success(`Fly Octocat, fly my pretty, fly!!!!`);
 
