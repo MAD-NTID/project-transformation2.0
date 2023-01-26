@@ -22,6 +22,7 @@ module.exports = async function (helper) {
   if(!project)
     return helper.fail('You are missing a step, complete the create a new project and working with VSC exercise first');
   try{
+    project = project.replace(/(\s+)/g, '\\$1');
     const stdout = await shell.git(`-C ${project} rev-parse HEAD`);
     if(stdout.toLowerCase().includes(answer1))
       return helper.success(`I’m just looking around to see who’s gonna finish second`);
