@@ -22,7 +22,7 @@ module.exports = async function (helper) {
   if(!project)
     return helper.fail('You are missing a step, butterfly statue & scroll mission first.');
   try{
-    console.log(project);
+    project = project.replace(/(\s+)/g, '\\$1');
     const stdout = await shell.git(`-C ${project} status`);
     console.log(stdout)
     if(stdout.includes("git add <file>...") && stdout.toLowerCase().includes('untracked files'))
