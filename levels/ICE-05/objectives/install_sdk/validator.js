@@ -28,7 +28,7 @@ module.exports = async function (helper) {
     let version = await dotnet('--version', 15, 'The program timed out while checking for the .NET SDK version');
     version = version.split(".");
 
-    if(version[0]!="6" && version!="7")
+    if(version[0]!=="6" && version!=="7")
       return helper.fail("Wrong version installed");
   } catch (e){
     if (!e.includes("time")){
