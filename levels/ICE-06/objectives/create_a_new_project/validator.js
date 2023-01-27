@@ -4,7 +4,6 @@ third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
 const assert = require("assert");
-const R = require("ramda");
 const { isTwilio } = require("../lib/example_helper");
 const {exec} = require("child_process");
 const path = require('path');

@@ -20,7 +20,13 @@ Console.WriteLine("Hello, World!");
 ```
 This is the default program that is generate by .NET when you create a new project.
 
-Have your program print hello world. My name is <Your name>
+On the top of your VSC, click on terminal and type 
+```dotnet run`` to run the project. You should see Hello World print on the console
+
+Modify the program to show
+```Hello World. My name is <Your name>
+```
+Your program should not include the <>
 
 
 
