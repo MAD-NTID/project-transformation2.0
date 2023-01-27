@@ -1,0 +1,15 @@
+{
+  "title": "My First program",
+  "description": "First C# Program",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the absolute path for the project?"
+    }
+  ],
+  "rewards": {
+    "xp": 600
+  }
+}

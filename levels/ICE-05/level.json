@@ -1,0 +1,18 @@
+{
+  "title": "05-Install SDK & VSCode",
+  "description": "Setup our environment so we can write codes",
+  "questTitle": "Setting up our programming environment",
+  "questDescription": "setting up the programming environment",
+  "mission_icon": "vscode.webp",
+  "is_mission": true,
+  "priority": 5,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book."
+  },
+  "objectives": ["first_program", "install_extension", "install_sdk","install_vsc"]
+}

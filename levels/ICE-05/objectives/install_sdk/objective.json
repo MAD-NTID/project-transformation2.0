@@ -1,0 +1,15 @@
+{
+  "title": "Help Kuro install .NET SDK on his laptop",
+  "description": "Help Kuro setup .NET SDK on his laptop",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What version of .NET SDK are we using in this course?"
+    }
+  ],
+  "rewards": {
+    "xp": 500
+  }
+}

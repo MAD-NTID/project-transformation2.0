@@ -1,0 +1,18 @@
+{
+  "title": "06- Working with Visual Studio Code and Dotnet",
+  "description": "During class, you learned how to set up and work with Visual Studio Code (VSC). You will use VSC to create an application. VSC is an Integrated Development Environment (IDE) which means it has all the tools you need to write, build, and run your program. In this exercise, you'll focus on reinforcing your VSC skills. The overall steps are listed below:",
+  "questTitle": "C# Basic training",
+  "questDescription": "Getting your feet wet with C#",
+  "mission_icon": "gettingstart.jpg",
+  "is_mission": true,
+  "priority": 6,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book."
+  },
+  "objectives": ["review_commands","create_a_new_project","second_console","blank_lines"]
+}

@@ -1,4 +1,4 @@
-const {spawn, ChildProcess} = require('node:child_process');
+const {spawn, ChildProcess} = require("child_process");
 const kill = require('tree-kill');
 
 const SUCCESS_EXIT = 0;
@@ -209,6 +209,14 @@ async function git(command, timeout = 15)
 }
 
 module.exports = {
-    git
+    git,
+    normalizeLineEndings,
+    isWindows,
+    isMAC,
+    indent,
+    cleanPath,
+    runProcess,
+    testOutput,
+    dotnet
 };
 

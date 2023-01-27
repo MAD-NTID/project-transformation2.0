@@ -1,0 +1,15 @@
+{
+  "title": "Install Visual studio code",
+  "description": "",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you install visual studio code?"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

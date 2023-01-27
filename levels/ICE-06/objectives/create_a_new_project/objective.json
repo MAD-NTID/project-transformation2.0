@@ -1,0 +1,21 @@
+{
+  "title": "First C# Statement",
+  "description": "Writing my first C# statement!!!",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What C# statement is used to show \"Hello Nerds/Geeks!!--- I'm <first name> <last name>\" (replace <firstName> with your firstname and <last name> with your lastname on the console?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the absolute path to your WorkingWithVisualStudioCode project?"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

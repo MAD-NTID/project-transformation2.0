@@ -1,0 +1,15 @@
+{
+  "title": "Add a second Console.WriteLine",
+  "description": "The second Console.WriteLine should contain your hometown information as describe in the objective",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you add your hometown information?"
+    }
+  ],
+  "rewards": {
+    "xp": 750
+  }
+}

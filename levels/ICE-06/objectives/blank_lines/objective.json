@@ -1,0 +1,15 @@
+{
+  "title": "Add blank lines to create spaces",
+  "description": "Using the Console.WriteLine to create spaces",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you figured out how to add the spaces?"
+    }
+  ],
+  "rewards": {
+    "xp": 800
+  }
+}

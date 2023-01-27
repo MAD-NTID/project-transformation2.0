@@ -1,0 +1,15 @@
+{
+  "title": "Install C# Extensions for VSC",
+  "description": "Install C# Extensions for VSC",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you install the extensions?"
+    }
+  ],
+  "rewards": {
+    "xp": 300
+  }
+}
