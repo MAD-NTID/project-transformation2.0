@@ -8,3 +8,7 @@ class TestOutputError extends Error
     }
 
 }
+
+module.exports = {
+    TestOutputError
+}

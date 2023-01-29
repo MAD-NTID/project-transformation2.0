@@ -1,5 +1,12 @@
 const {spawn, ChildProcess} = require("child_process");
 const kill = require('tree-kill');
+const {TimedoutError} = require("./timedout.error");
+const {TestCaseError} = require("./testcase.error");
+const {TestOutputError} = require('./testoutput.error');
+const fs = require('fs');
+const pathLib = require("path");
+
+let error = "";
 
 const SUCCESS_EXIT = 0;
 
@@ -24,10 +31,21 @@ function indent(text){
 }
 
 function cleanPath(path){
-    if(isWindows() && path.includes('/c/'))
-        return path.substring(2);
-    
-    
+    if(!path)
+        path = '';
+
+
+    if(isWindows() && (path.includes('/c/') || path.includes('/d/')))
+    {
+       path = `${path.substring(1,2)}:/${path.substring(3)}`;
+       path = path.split(pathLib.sep).join(pathLib.win32.sep);
+       //console.log(`The windows path is: ${path}`);
+
+    }
+
+
+    if(!fs.existsSync(path))
+        throw new Error(`The path ${path} doesnt exist!`);
     return path;
 }
 
@@ -61,7 +79,17 @@ const waitForProcessToExit = async(child, timeOut, timedOutMessage)=>
             if(code === SUCCESS_EXIT)
                 resolve(undefined);
             else
+            {
+                if(error.length > 0)
+                {
+                    let error_clone = error;
+                    error = "";
+                    reject(new TestCaseError(`Error: ${error_clone}`))
+                }
+
                 reject(new TestCaseError(`Error: Exit with code: ${code} and signal: ${signal}`))
+            }
+
         });
 
 
@@ -69,9 +97,8 @@ const waitForProcessToExit = async(child, timeOut, timedOutMessage)=>
         child.once('error', (error)=>
         {
             if(timedOut) return;
-
             clearTimeout(terminatedTimeout);
-            reject(error);
+            reject(new TestCaseError(error));
         });
 
 
@@ -79,6 +106,8 @@ const waitForProcessToExit = async(child, timeOut, timedOutMessage)=>
 }
 
 const spawnProcess = (cmd, cwd = undefined) =>{
+
+    console.log(cmd);
     //by default, we run the process in the current directory
     if(!cwd)
         cwd = '.'
@@ -134,6 +163,7 @@ const runProcess = async(command, timeout, timedOutMessage, inputs = [], cwd = u
 
 
     child.stderr.on('data', chunk => {
+        error+= chunk;
         process.stderr.write(indent(chunk))
     })
 
@@ -208,6 +238,11 @@ async function git(command, timeout = 15)
     return runProcess(`git ${command}`, timeout, `An error occurred while running the git command ${command}`);
 }
 
+async function readFile(path)
+{
+    return await  fs.promises.readFile(path, 'utf-8');
+}
+
 module.exports = {
     git,
     normalizeLineEndings,
@@ -217,6 +252,7 @@ module.exports = {
     cleanPath,
     runProcess,
     testOutput,
-    dotnet
+    dotnet,
+    readFile
 };
 

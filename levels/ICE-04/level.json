@@ -5,7 +5,7 @@
   "questDescription": "Mastering Github is essential to passing in this course",
   "mission_icon": "github.png",
   "is_mission": true,
-  "priority": 6,
+  "priority": 4,
   "backgroundMusic": "hackertheme_104771b",
   "backgroundEffect": {
     "key": "vr",

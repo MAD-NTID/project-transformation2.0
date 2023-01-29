@@ -14,6 +14,7 @@ these functions to let the game (and the player) know whether or not they
 have completed the challenge as instructed.
 */
 const shell = require("../lib/utility");
+const {git, cleanPath} = require("../../../../scripts/utils");
 module.exports = async function (helper) {
   // We start by getting the user input from the helper
   const { answer1 } = helper.validationFields;
@@ -22,9 +23,8 @@ module.exports = async function (helper) {
   if(!project)
     return helper.fail('You are missing a step, butterfly statue & scroll mission first.');
   try{
-    project = project.replace(/(\s+)/g, '\\$1');
-    const stdout = await shell.git(`-C ${project} status`);
-    console.log(stdout)
+    project = cleanPath(project);
+    const stdout = await git(`-C "${project}" status`)
     if(stdout.includes("git add <file>...") && stdout.toLowerCase().includes('untracked files'))
       return helper.fail('Incorrect, there are still some files that have not been added to be tracked for changes');
   }catch (e){

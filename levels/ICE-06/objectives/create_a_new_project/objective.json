@@ -3,16 +3,22 @@
   "description": "Writing my first C# statement!!!",
   "validation_fields": [
     {
+      "name":"answer0",
+      "type": "text",
+      "placeholder": "John Doe",
+      "label": "1. Enter your first and last name"
+    },
+    {
       "name": "answer1",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "What C# statement is used to show \"Hello Nerds/Geeks!!--- I'm <first name> <last name>\" (replace <firstName> with your firstname and <last name> with your lastname on the console?"
+      "label": "2. What C# statement is used to show output on the console?"
     },
     {
       "name": "answer2",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "What is the absolute path to your WorkingWithVisualStudioCode project?"
+      "label": "3. What is the absolute path to your WorkingWithVisualStudioCode project?"
     }
   ],
   "rewards": {

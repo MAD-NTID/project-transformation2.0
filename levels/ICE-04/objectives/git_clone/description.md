@@ -10,3 +10,4 @@ The Git clone command will create a new local directory for the repository, copy
 3. Type the command on the terminal ```git clone <url>``` . The <url> is the same as the repository that was created for you after you accepted the invitation from GitHub classroom
 4. press enter and wait for it to download the repository
 5. Type ```ls``` and locate the newly created repository(my-first-github-<your username>)
+6. cd into my-first-github-classroom-<github username>

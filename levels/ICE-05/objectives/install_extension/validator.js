@@ -39,20 +39,6 @@ module.exports = async function (helper) {
   if(!extensions.includes("kreativ-software.csharpextensions"))
     return helper.fail("The C# Extensions JosKreativ extension for visual studio code is not installed");
 
-  // exec('code --list-extensions', (err, stdout, stderr) => {
-  //   if(err) {
-  //     throw err;
-  //   } else if(stderr){
-  //     throw err;
-  //   }
-
-  //   console.log(stdout);
-
-  //   if(!stdout.includes('ms-dotnettools.csharp')){
-  //     return helper.fail('The C# extension for visual studio is not installed');
-  //   }
-  // });
-
 
 
   // The way we usually write validators is to fail fast, and then if we reach

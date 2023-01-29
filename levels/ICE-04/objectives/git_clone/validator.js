@@ -8,6 +8,7 @@ const axios = require('axios').default;
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const fs = require('fs');
+const {cleanPath, git} = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -22,24 +23,14 @@ module.exports = async function (helper) {
   // We start by getting the user input from the helper
   const { answer1 } = helper.validationFields;
   let username = helper.env.TQ_GITHUB_USERNAME;
-
-  let path = answer1;
-
-  if(process.platform==='win32' && answer1.includes('/c/'))
-    path = answer1.substring(2); //do not include /c for windows
-
-  if(!fs.existsSync(path))
-    return helper.fail('Invalid path! the path is not a folder and doesnt exist!');
   try{
-    const { stdout, stderr } = await exec(`git -C ${path} status`);
-    if(stderr)
-      throw stderr;
-
-    return helper.success(`Hooray! shadow clones, let us go!!!`, [{ name: "GITHUB_CLONE_PATH", value: path }]);
+    let path = cleanPath(answer1);
+    await git(`-C "${path}" status`);
+    return helper.success(`Hooray! You successfully clone the project, let us go!!!`, [{ name: "GITHUB_CLONE_PATH", value: path }]);
   }catch(e)
   {
-    if(e.toString().includes('not a git repository'))
-      return helper.fail(`Incorrect. The folder doesnt contain .git. Please input the absolute path to my-first-github-${username}`)
+    if(e.message.toString().includes('not a git repository'))
+      return helper.fail(`Incorrect. The folder ${answer1} doesnt contain .git. Please input the absolute path to my-first-github-${username}`)
     return helper.fail(e);
   }
 

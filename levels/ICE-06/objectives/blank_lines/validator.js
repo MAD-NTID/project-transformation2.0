@@ -3,12 +3,9 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const assert = require("assert");
-const { isTwilio } = require("../lib/example_helper");
-const {exec} = require("child_process");
 const path = require('path');
 const fs = require('fs');
-const {forEach} = require("ramda");
+const {readFile, normalizeLineEndings, dotnet} = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -27,57 +24,59 @@ module.exports = async function (helper) {
     return helper.fail('Y/N');
 
 
-
   if(!helper.env.TQ_GETTING_START_PATH) {
     return helper.fail('You need to complete the create a new project step first!');
   }
 
-  let fullPath= helper.env.TQ_GETTING_START_PATH;
+  let fullPath= path.join(helper.env.TQ_GETTING_START_PATH, "Program.cs");
+  let project = helper.env.TQ_GETTING_START_PATH;
+  let fullName = helper.env.TQ_FULL_NAME.split(" ");
+  let hometown = helper.env.TQ_HOME_TOWN;
 
-  if(!fs.existsSync(fullPath)){
-    return helper.fail('Incorrect-> Cannot find Program.cs in WorkingWithVisualStudioCode');
-  }
 
-  fs.readFile(fullPath, 'utf8', (err, data) => {
-    if (err) {
-      return helper.fail(err);
+  try {
+
+    if(!fs.existsSync(fullPath)){
+      return helper.fail('Project is not setup correctly. Missing Program.cs?');
     }
+    //reading the file data
+    const data = normalizeLineEndings(await readFile(fullPath));
+    if(data.length === 0)
+      return helper.fail("Program.cs cannot be empty!");
 
-    if(!data.includes("Console.WriteLine()") && !data.includes('Console.WriteLine("")'))
+    if(!data.includes("Console.WriteLine()") && !data.includes('Console.WriteLine("")') && !data.includes('\\n'))
       return helper.fail('That is not how you add the space. Try again');
 
-    //attempt to ensure that the project compiled
-    const { exec } = require('child_process');
-    let project = fullPath.replace('Program.cs', '');
+    //attempting to run the project
 
-    let command = 'dotnet';
-    //mac have the dotnet executable at a specific location and the symlink doesnt seems to be available when calling through script
-    if(process.platform==='darwin')
-      command = '/usr/local/share/dotnet/dotnet';
+    const stdout = await dotnet(`run --project "${project}"`, 15, "The program timed out while attempting to run your project with dotnet run");
 
-    const ls = exec(`${command} run --project ${project}`, function (error, stdout, stderr) {
-      if (error) {
-        console.log(error.stack);
-        return helper.fail('An error occurred while compiling your project')
-      } else if(stderr){
-        console.log(stderr);
-        return helper.fail('An error occurred while compiling your project')
-      } else {
-        // The way we usually write validators is to fail fast, and then if we reach
-        // the end, we know the user got all the answers right!
-        helper.success(`Hooray! You did it!`);
-      }
-
-      console.log('Child Process STDOUT: ' + stdout);
-      console.log('Child Process STDERR: ' + stderr);
-    });
-
-    ls.on('exit', function (code) {
-      console.log('Child process exited with exit code ' + code);
-    });
+    if(!stdout.includes("Hello Nerds/Geeks!!--- I'm"))
+      return helper.fail("Hello Nerds/Geeks!!--- I'm is missing from the console! please check the objective menu and try again");
 
 
-  });
+    if(stdout.includes("<first name>"))
+      return helper.fail("replace <first name> with your first name");
+
+    if(stdout.includes("<last name>"))
+      return helper.fail("replace <last name> with your last name");
+
+
+    if(!stdout.includes(fullName[0]) || !stdout.includes(fullName[1]))
+      return helper.fail("You must include you first and last name in the console. Check the objective menu for the sample output and try again");
+
+    if(!stdout.includes("I am from the best hometown in the USA,") || !stdout.includes(`${hometown}`))
+      return helper.fail("Please enter your hometown information in Program.cs following the instruction in the objective menu");
+
+
+    helper.success(`Congratulation on completing the assignment. You deserve a pat on the back!`);
+
+
+  }catch(e)
+  {
+    return helper.fail(e.message);
+  }
+
 
 
 

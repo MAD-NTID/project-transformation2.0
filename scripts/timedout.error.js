@@ -5,3 +5,7 @@ class TimedoutError extends Error
         Error.captureStackTrace(this, TimedOutError);
     }
 }
+
+module.exports = {
+    TimedoutError
+}

@@ -4,3 +4,7 @@ class TestCaseError extends Error{
         Error.captureStackTrace(this, TestCaseError);
     }
 }
+
+module.exports = {
+    TestCaseError
+}

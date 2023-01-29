@@ -14,6 +14,7 @@ these functions to let the game (and the player) know whether or not they
 have completed the challenge as instructed.
 */
 const shell = require("../lib/utility");
+const {git, cleanPath} = require("../../../../scripts/utils");
 module.exports = async function (helper) {
   // We start by getting the user input from the helper
   const { answer1 } = helper.validationFields;
@@ -22,8 +23,8 @@ module.exports = async function (helper) {
   if(!project)
     return helper.fail('You are missing a step, complete the create a new project and working with VSC exercise first');
   try{
-    project = project.replace(/(\s+)/g, '\\$1');
-    const stdout = await shell.git(`-C ${project} rev-parse HEAD`);
+    project = cleanPath(project);
+    const stdout =  await git(`-C "${project}" rev-parse HEAD`);
     if(stdout.toLowerCase().includes(answer1))
       return helper.success(`I’m just looking around to see who’s gonna finish second`);
 
