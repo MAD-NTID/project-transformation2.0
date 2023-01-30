@@ -253,6 +253,8 @@ module.exports = {
     runProcess,
     testOutput,
     dotnet,
-    readFile
+    readFile,
+    isMAC,
+    isWindows
 };
 

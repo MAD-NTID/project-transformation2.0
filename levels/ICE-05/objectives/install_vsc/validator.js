@@ -3,7 +3,7 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const{runProcess} = require('../../../../scripts/utils');
+const{runProcess, isMAC} = require('../../../../scripts/utils');
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -29,7 +29,13 @@ module.exports = async function (helper) {
 
   try{
     //shellVSC('code')
-    await runProcess('code',15,'The program timed out while running attempting to open visual studio code');
+
+    let command = 'code';
+
+    if(isMAC()){
+      command = await runProcess('which code');
+    }
+    await runProcess(command,15,'The program timed out while running attempting to open visual studio code');
   }catch(e){
     return helper.fail(`${e.message} Incorrect.Please install visual studio code`);
   }
