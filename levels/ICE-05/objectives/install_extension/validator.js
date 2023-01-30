@@ -33,8 +33,8 @@ module.exports = async function (helper) {
   }
 
   let command = 'code';
-  if(isMAC){
-    command = await runProcess('which code', 15, 'The program timed out while getting vsc path');
+  if(isMAC()){
+    command = '/usr/local/bin/code';
   }
 
   let extensions = await runProcess(`${command} --list-extensions`, 15, "The program timedout while getting the list of extensions");

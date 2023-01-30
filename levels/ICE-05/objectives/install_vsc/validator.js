@@ -33,7 +33,7 @@ module.exports = async function (helper) {
     let command = 'code';
 
     if(isMAC()){
-      command = await runProcess('which code', 15, 'The program timed out while getting vsc path');
+      command = '/usr/local/bin/code';
     }
     await runProcess(command,15,'The program timed out while running attempting to open visual studio code');
   }catch(e){
