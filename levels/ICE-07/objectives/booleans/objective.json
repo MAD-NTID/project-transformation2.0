@@ -6,7 +6,7 @@
       "name": "answer1",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Create a variable called isRocketLaunched and set the value to false"
+      "label": "1. Create a variable called isRocketLaunched and set the value to false"
     },
     {
       "name": "answer2",

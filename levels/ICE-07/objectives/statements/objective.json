@@ -6,19 +6,19 @@
       "name": "answer1",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "What are statements?"
+      "label": "1. What are statements?"
     },
     {
       "name": "answer2",
       "type": "boolean",
       "placeholder": "type your answer here",
-      "label": "Statements can span on multiple lines"
+      "label": "2. Statements can span on multiple lines"
     },
     {
       "name": "answer3",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "A statement ends with __________"
+      "label": "3. A statement ends with __________"
     }
   ],
   "rewards": {

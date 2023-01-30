@@ -6,30 +6,30 @@
       "name": "answer1",
       "type": "number",
       "placeholder": "type your answer here",
-      "label": "How many type of comments will we be using in this course?"
+      "label": "1. How many type of comments will we be using in this course?"
     },
     {
       "name": "answer2",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Write an example of single line comment"
+      "label": "2. Write an example of single line comment"
     },    {
       "name": "answer3",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Write an example of multiple line comment"
+      "label": "3. Write an example of multiple line comment"
     },
     {
       "name": "answer4",
       "type": "boolean",
       "placeholder": "type your answer here",
-      "label": "Comments are executed by the computer"
+      "label": "4. Comments are executed by the computer"
     },
     {
       "name": "answer5",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Comments are for__________________"
+      "label": "5. Comments are for__________________"
     }
   ],
   "rewards": {

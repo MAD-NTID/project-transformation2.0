@@ -23,7 +23,7 @@ module.exports = async function (helper) {
     return helper.fail('Incorrect answer provided for question #1');
   if(!answer2 || answer2!=='decimal')
     return helper.fail('Incorrect answer provided for question #2');
-  if(!answer3 || (!answer3.includes('wrap') && !answer3.includes('overflow')))
+  if(!answer3 || (!answer3.includes('wrap') && !answer3.includes('overflow') && !answer3.includes('wrap-around') && !answer3.includes('wraparound')))
     return helper.fail('Incorrect answer provided for question #3')
 
   // The way we usually write validators is to fail fast, and then if we reach

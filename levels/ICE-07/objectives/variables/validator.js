@@ -34,7 +34,8 @@ module.exports = async function (helper) {
   if(!answer4 || !answer4.match(balanceRegex))
     return helper.fail('Incorrect answer provided for the fourth question');
 
-  let nameRegex = /string[\s+]name[\s+]=[\s+]"[a-zA-Z]+ [a-zA-Z]+";/
+  //let nameRegex = /string[\s+]name[\s+]=[\s+]"[a-zA-Z]+ [a-zA-Z]+";/
+  let nameRegex = /string[\s+]name[\s+]=[\s+]"{1}[a-zA-Z]+ [a-zA-Z]+"{1};/gm
   if(!answer5 || !answer5.match(nameRegex))
     return helper.fail("Incorrect answer provided for the fifth question");
 

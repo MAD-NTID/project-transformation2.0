@@ -6,19 +6,19 @@
       "name": "answer1",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Which type accept positive or negative whole numbers?"
+      "label": "1. Which type accept positive or negative whole numbers?"
     },
     {
       "name": "answer2",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Which type is better for applications that requires high precision numbers?"
+      "label": "2. Which type is better for applications that requires high precision numbers?"
     },
     {
       "name": "answer3",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "what happens when an int variable reach the maximum numbers it can hold?"
+      "label": "3. What happens when an int variable reach the maximum numbers it can hold?"
     }
   ],
   "rewards": {

@@ -28,7 +28,7 @@ module.exports = async function (helper) {
   if(!answer2 || answer2!=='true')
     return helper.fail("Incorrect answer regarding comment spanning");
 
-  if(!answer3 || (answer3!=='semi-colon' && answer3!==';'))
+  if(!answer3 || (answer3!=='semi-colon' && answer3!==';' && answer3!=='semicolon'))
     return helper.fail("Incorrect answer regarding how statements are ended");
 
   // The way we usually write validators is to fail fast, and then if we reach

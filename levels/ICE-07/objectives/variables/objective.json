@@ -6,31 +6,31 @@
       "name": "answer1",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "What are variables?"
+      "label": "1. What are variables?"
     },
     {
       "name": "answer2",
       "type": "boolean",
       "placeholder": "type your answer here",
-      "label": "Variable declarations are required in C#?"
+      "label": "2. Variable declarations are required in C#?"
     },
     {
       "name": "answer3",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "create a variable called age to store your age"
+      "label": "3. create a variable called age to store your age"
     },
     {
       "name": "answer4",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "create a variable called balance to store 250.00"
+      "label": "4. Create a variable called balance to store 250.00"
     },
     {
       "name": "answer5",
       "type": "text",
       "placeholder": "type your answer here",
-      "label": "Create a variable called name to store your full name"
+      "label": "5.Create a variable called name to store your full name"
     }
   ],
   "rewards": {
