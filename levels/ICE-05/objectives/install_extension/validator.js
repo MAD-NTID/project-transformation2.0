@@ -5,7 +5,7 @@ Node.js module (since that's what this is!)
 */
 //const { isTwilio, shellCSharpExtension} = require("../lib/shell_helper");
 //const { exec } = require('child_process');
-const{runProcess, dotnet, testOutput} = require('../../../../scripts/utils');
+const{runProcess, dotnet, testOutput, isMAC} = require('../../../../scripts/utils');
 
 const path = require('path');
 const fs = require('fs');
@@ -32,7 +32,12 @@ module.exports = async function (helper) {
     `);
   }
 
-  let extensions = await runProcess('code --list-extensions', 15, "The program timedout while getting the list of extensions");
+  let command = 'code';
+  if(isMAC){
+    command = await runProcess('which code', 15, 'The program timed out while getting vsc path');
+  }
+
+  let extensions = await runProcess(`${command} --list-extensions`, 15, "The program timedout while getting the list of extensions");
   if(!extensions.includes("ms-dotnettools.csharp"))
     return helper.fail("The C# Microsoft extension for visual studio code is not installed")
   
