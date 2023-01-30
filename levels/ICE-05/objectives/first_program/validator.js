@@ -9,7 +9,7 @@ const { isTwilio } = require("../lib/example_helper");
 const path = require('path');
 const fs = require('fs');
 const {exec} = require("child_process");
-const {cleanPath, dotnet} = require("../../../../scripts/utils");
+const {cleanPath, dotnet, projectInfo} = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -28,14 +28,16 @@ module.exports = async function (helper) {
     return helper.fail('Please enter the absolute path for the project');
   }
 
-  let project = cleanPath(answer1);
-  let dir = path.join(project,'Program.cs');
-  if(!fs.existsSync(dir)){
-    return helper.fail('Project is not setup correctly. Missing Program.cs?');
-  }
+  let project = await projectInfo(answer1);
+
+  // let project = cleanPath(answer1);
+  // let dir = path.join(project,'Program.cs');
+  // if(!fs.existsSync(dir)){
+  //   return helper.fail('Project is not setup correctly. Missing Program.cs?');
+  // }
 
   try{
-    await dotnet(`run --project "${project}"`, 20, "The program timed out while testing your project");
+    await dotnet(`run --project "${project.project}"`, 20, "The program timed out while testing your project");
   }catch(e)
   {
     return helper.fail(e.message);
