@@ -35,14 +35,14 @@ function cleanPath(path){
         path = '';
 
 
+    //convert path to appropriate windows path as virtual path from git bash doesnt always work
     if(isWindows() && (path.includes('/c/') || path.includes('/d/')))
     {
        path = `${path.substring(1,2)}:/${path.substring(3)}`;
        path = path.split(pathLib.sep).join(pathLib.win32.sep);
-       //console.log(`The windows path is: ${path}`);
-
     }
 
+    //add double quote around the path to escape spacing issue
 
     if(!fs.existsSync(path))
         throw new Error(`The path ${path} doesnt exist!`);
@@ -243,6 +243,28 @@ async function readFile(path)
     return await  fs.promises.readFile(path, 'utf-8');
 }
 
+async function projectInfo(parentFolder, projectName = "default")
+{
+    if(!parentFolder || parentFolder.length === 0)
+        throw new Error("Did you forget to clone the github classroom?");
+
+    if(!projectName || projectName.length === 0)
+        throw new Error("Project name cannot be empty");
+
+    let project = pathLib.resolve(cleanPath(parentFolder), projectName === "default" ? "": projectName);
+    let programPath = pathLib.resolve(project, 'Program.cs');
+
+
+    let programFileContent = await readFile(programPath);
+
+    return {
+        parent:parentFolder,
+        project:project,
+        programPath:programPath,
+        programContent: programFileContent
+    }
+}
+
 module.exports = {
     git,
     normalizeLineEndings,
@@ -255,6 +277,7 @@ module.exports = {
     dotnet,
     readFile,
     isMAC,
-    isWindows
+    isWindows,
+    projectInfo
 };
 

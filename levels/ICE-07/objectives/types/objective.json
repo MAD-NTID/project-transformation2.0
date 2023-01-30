@@ -1,0 +1,21 @@
+{
+  "title": "Understanding the C# types",
+  "description": "C# is a strong type language. Let us learn the basic of types",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "What is a type",
+      "label": "1. What is a type?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "2. Name 4 types that are supported by the C# programming language? Separate your answer with commas"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

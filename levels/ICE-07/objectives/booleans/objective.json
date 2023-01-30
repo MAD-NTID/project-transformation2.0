@@ -1,0 +1,21 @@
+{
+  "title": "Understanding Boolean",
+  "description": "We will use boolean logics a lot in this class. Let us master the basics together",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "1. Create a variable called isRocketLaunched and set the value to false"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "bool x = 7; <br/>bool y = 7;<br/>Console.WriteLine(x > y); <br/>What value is output based on the code snippet above?"
+    }
+  ],
+  "rewards": {
+    "xp": 300
+  }
+}

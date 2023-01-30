@@ -1,0 +1,27 @@
+{
+  "title": "Number Types in C#",
+  "description": "It is important to understand the number types in C# and which to use.",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "1. Which type accept positive or negative whole numbers?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "2. Which type is better for applications that requires high precision numbers?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "3. What happens when an int variable reach the maximum numbers it can hold?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
