@@ -1,0 +1,27 @@
+{
+  "title": "Understanding Programming Statements",
+  "description": "In this objective, you will understand what statements are",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What are statements?"
+    },
+    {
+      "name": "answer2",
+      "type": "boolean",
+      "placeholder": "type your answer here",
+      "label": "Statements can span on multiple lines"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "A statement ends with __________"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

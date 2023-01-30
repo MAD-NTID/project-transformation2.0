@@ -1,0 +1,23 @@
+{
+  "title": "Understanding Concatenation in C#",
+  "description": "Concatenation is one of the fundamental skills to master in programming",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "textarea",
+      "placeholder": "type your answer here",
+      "label": "string firstName = \"Johnny\"; <br/> string lastName = \"Deep\"; <br/> Write the C# code to display the concatenate of the two variables above so that it shows as Johnny Deep. Do not create an additional variable"
+    },
+
+    {
+      "name": "answer2",
+      "type": "textarea",
+      "placeholder": "type your answer here",
+      "label": "string name = \"Kuro\";<br/> int yearInCollege = 1; <br/> int yearsToGraduate = 4; Use the Console.WriteLine with replacement concept to display <br/>Kuro is a 1 year(s) student. He will be graduating in 4 years. <br/>(Everything should be display on the same line)"
+    }
+
+  ],
+  "rewards": {
+    "xp": 650
+  }
+}

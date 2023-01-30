@@ -34,11 +34,6 @@ function cleanPath(path){
     if(!path)
         path = '';
 
-    //add double quote around the path to escape spacing issue
-   if(!path.includes(`"`)){
-       path = `"${path}"`;
-   }
-
 
     //convert path to appropriate windows path as virtual path from git bash doesnt always work
     if(isWindows() && (path.includes('/c/') || path.includes('/d/')))
@@ -47,6 +42,7 @@ function cleanPath(path){
        path = path.split(pathLib.sep).join(pathLib.win32.sep);
     }
 
+    //add double quote around the path to escape spacing issue
 
     if(!fs.existsSync(path))
         throw new Error(`The path ${path} doesnt exist!`);
@@ -247,16 +243,16 @@ async function readFile(path)
     return await  fs.promises.readFile(path, 'utf-8');
 }
 
-async function projectInfo(parentFolder, projectName = "")
+async function projectInfo(parentFolder, projectName = "default")
 {
-    if(!parentFolder)
+    if(!parentFolder || parentFolder.length === 0)
         throw new Error("Did you forget to clone the github classroom?");
 
-    if(!projectName)
+    if(!projectName || projectName.length === 0)
         throw new Error("Project name cannot be empty");
 
-    let project = cleanPath(pathLib.resolve(parentFolder, projectName));
-    let programPath = cleanPath(pathLib.resolve(project, 'Program.cs'));
+    let project = pathLib.resolve(cleanPath(parentFolder), projectName === "default" ? "": projectName);
+    let programPath = pathLib.resolve(project, 'Program.cs');
 
 
     let programFileContent = await readFile(programPath);
