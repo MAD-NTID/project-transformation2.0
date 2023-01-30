@@ -31,7 +31,7 @@ module.exports = async function (helper) {
     //shellVSC('code')
     await runProcess('code',15,'The program timed out while running attempting to open visual studio code');
   }catch(e){
-    return helper.fail('Incorrect.Please install visual studio code');
+    return helper.fail(`${e.message} Incorrect.Please install visual studio code`);
   }
 
   // The way we usually write validators is to fail fast, and then if we reach
