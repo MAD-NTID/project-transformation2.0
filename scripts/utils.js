@@ -163,6 +163,7 @@ const runProcess = async(command, timeout, timedOutMessage, inputs = [], cwd = u
 
 
     child.stderr.on('data', chunk => {
+        throw chunk;
         error+= chunk;
         process.stderr.write(indent(chunk))
     })
