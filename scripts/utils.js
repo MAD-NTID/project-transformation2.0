@@ -228,9 +228,9 @@ const testOutput = async (test, actual,expected,comparison,caseInSensitive=false
 
 async function dotnet(command, timeout, timeoutMessage, inputs = [], cwd = undefined)
 {
-    let dotnet = 'dotnet ';
+    let dotnet = 'dotnet';
     if(isMAC())
-        dotnet = '/usr/local/share/dotnet/dotnet ';
+        dotnet = '/usr/local/share/dotnet/dotnet';
     return runProcess(`${dotnet} ${command}`, timeout, timeoutMessage, inputs, cwd)
 }
 

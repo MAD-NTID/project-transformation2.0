@@ -37,7 +37,7 @@ module.exports = async function (helper) {
   // }
 
   try{
-    await dotnet(`run --project "${project.project}"`, 20, "The program timed out while testing your project");
+    await dotnet(`run --project ${project.project}`, 20, "The program timed out while testing your project");
   }catch(e)
   {
     return helper.fail(e.message);
