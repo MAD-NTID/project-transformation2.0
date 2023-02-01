@@ -1,0 +1,21 @@
+{
+  "title": "Mastering Prefix",
+  "description": "Tracing the values of the prefix",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Based on the code in the objective, what is the value of y?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Based on the code in the objective, what is the value of x?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

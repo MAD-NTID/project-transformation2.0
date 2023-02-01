@@ -1,0 +1,21 @@
+{
+  "title": "Understanding postfix",
+  "description": "Tracing the value of the postfix variables",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Based on the snippet in the objective, what is the value of x?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Based on the snippet in the objective, what is the value of y?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

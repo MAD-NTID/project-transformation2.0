@@ -1,0 +1,27 @@
+{
+  "title": "Evaluating a simple expression",
+  "description": "master the basic of expression",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "1. What is the remaining data type after the expression has been evaluated (prior to being print by the Console.WriteLine)?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "2. What is the remaining data type after the expression has been evaluated and printed to the console by the Console.WriteLine?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "3. What is the result of the expression?"
+    }
+  ],
+  "rewards": {
+    "xp": 120
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Working with Type Conversion/ Casting",
+  "description": "",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What are two main type of conversion that was mentioned in the lecture? <br/>(They can also be found on the objective)"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Fix the following snippet<br/> int num = 2147483647/22.0;"
+    }
+  ],
+  "rewards": {
+    "xp": 250
+  }
+}

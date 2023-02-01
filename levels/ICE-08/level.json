@@ -1,0 +1,18 @@
+{
+  "title": "08 - Expressions and Type Conversion",
+  "description": "Mastering expression and type conversion",
+  "questTitle": "Virtual Reality Training",
+  "questDescription": "Example level for VR training. See what's possible!",
+  "mission_icon": "expression.png",
+  "is_mission": true,
+  "priority": 8,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book."
+  },
+  "objectives": ["warm_up_expression", "type_casting","prefix","post_fix"]
+}
