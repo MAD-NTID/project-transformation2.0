@@ -1,0 +1,21 @@
+{
+  "title": "Clone the repository",
+  "description": "Setting up the repository",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is your github username?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the absolute path to the repository that you cloned from github classroom?"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

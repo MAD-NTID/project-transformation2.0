@@ -3,6 +3,9 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
+const assert = require("assert");
+const R = require("ramda");
+const { isTwilio } = require("../lib/example_helper");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -15,18 +18,27 @@ have completed the challenge as instructed.
 */
 module.exports = async function (helper) {
   // We start by getting the user input from the helper
-  const { answer1, answer2,answer3,answer4 } = helper.validationFields;
+  const { answer1, answer2 } = helper.validationFields;
 
-  if(!answer1 || (answer1!=='dotnet -h' && answer1!=='dotnet --help'))
-      return helper.fail('Incorrect for the first question. The answer is in the objective tab');
-  if(!answer2 || answer2!=='dotnet new console -n MyFirstProject')
-    return helper.fail('Incorrect answer for the second question. run the dotnet -h again and look at the available commands');
+  // Next, you test the user input - fail fast if they get one of the
+  // answers wrong, or some aspect is wrong! Don't provide too much
+  // negative feedback at once, have the player iterate.
+  if (!answer1 || !isTwilio(answer1)) {
+    return helper.fail(`
+      The answer to the first question is incorrect. The company that
+      makes TwilioQuest starts with a "T" and ends with a "wilio".
+    `);
+  }
 
-  if(!answer3 || answer3!=='dotnet run')
-    return helper.fail('Incorrect answer on how to run the program from the current directory. Use the help to see the list of available commands');
-
-  if(!answer4 || answer4!=='dotnet run --project PF1/MyFirstProject')
-    return helper.fail('Incorrect answer on how to run the program when you are not in the directory');
+  // You can use npm or core Node.js dependencies in your validators!
+  try {
+    assert.strictEqual(R.add(2, 2), Number(answer2));
+  } catch (e) {
+    return helper.fail(`
+      The second answer you provided was either not a number, or not the
+      correct response for "what is 2 + 2".
+    `);
+  }
 
   // The way we usually write validators is to fail fast, and then if we reach
   // the end, we know the user got all the answers right!

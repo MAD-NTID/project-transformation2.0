@@ -1,0 +1,15 @@
+{
+  "title": "Block Statement",
+  "description": "Understanding Block statement and its usage in programming",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is a block statement?"
+    }
+  ],
+  "rewards": {
+    "xp": 50
+  }
+}

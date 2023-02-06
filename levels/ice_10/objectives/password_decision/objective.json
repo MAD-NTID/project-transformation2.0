@@ -1,0 +1,15 @@
+{
+  "title": "Part 2 - Logon Screen",
+  "description": "Building a username and password validator system",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you complete the objective?"
+    }
+  ],
+  "rewards": {
+    "xp": 500
+  }
+}

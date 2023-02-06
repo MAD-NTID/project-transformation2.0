@@ -40,6 +40,8 @@ function cleanPath(path){
     {
        path = `${path.substring(1,2)}:/${path.substring(3)}`;
        path = path.split(pathLib.sep).join(pathLib.win32.sep);
+    } else {
+        path = path.replace(/(\s+)/g, '\\$1');
     }
 
     //add double quote around the path to escape spacing issue

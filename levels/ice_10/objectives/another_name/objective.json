@@ -1,0 +1,21 @@
+{
+  "title": "Decisions",
+  "description": "Warming up to decisions",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "If/Else statements are also known as ____________________________ statements"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "What is the result of the code snippet? <br/> Console.WriteLine(8 > 1 && 2 < 3);"
+    }
+  ],
+  "rewards": {
+    "xp": 100
+  }
+}

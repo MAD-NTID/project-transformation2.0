@@ -112,7 +112,13 @@ async function checkGithubUsername(username)
 
 function cleanPath(path){
     if(process.platform==='win32' && path.includes('/c/'))
-        return path.substring(2);
+    {
+        path = `${path.substring(1,2)}:/${path.substring(3)}`;
+        path = path.split(pathLib.sep).join(pathLib.win32.sep);
+    } else {
+        path = path.replace(/(\s+)/g, '\\$1');
+    }
+        
 
     return path;
 }

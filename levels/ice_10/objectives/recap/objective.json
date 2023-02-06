@@ -1,0 +1,45 @@
+{
+  "title": "Review",
+  "description": "Testing your understanding of the basic concepts",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "1. What C# statement is used to get the input from the user?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "2. We can interact with the keyboard and the computer's display through the _____________"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "3. What data type are if/else statements?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "4. What is the method to convert a string to an int numeric data type? (method only, no parameters required)"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "5. An if statement block is executed if, and only if the condition is ____________"
+    },
+    {
+      "name": "answer6",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "6. The else statement block is executed only if the \"if\" statement block is ________________"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

@@ -3,6 +3,8 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
+const assert = require("assert");
+const { isTwilio } = require("../lib/example_helper");
 
 /*
 Objective validators export a single function, which is passed a helper
