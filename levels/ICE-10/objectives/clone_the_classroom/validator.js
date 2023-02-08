@@ -19,16 +19,15 @@ module.exports = async function (helper) {
   // We start by getting the user input from the helper
   const { answer1, answer2 } = helper.validationFields;
 
-  try{
-    await checkGithubUsername(answer1)
-  }catch(err)
-  {
-    return helper.fail(err);
-  }
 
   try{
-    cleanPath(answer2);
-    await git(`-C "${answer2}" status`, 15)
+    await checkGithubUsername(answer1)
+    let dir = cleanPath(answer2);
+    await git(`-C "${dir}" status`, 15);
+
+      // The way we usually write validators is to fail fast, and then if we reach
+     // the end, we know the user got all the answers right!
+    helper.success(`Hooray! You did it!`,[{ name: "GITHUB_CLONE_PATH_ICE_10_CLASSROOM", value: dir }]);
   }
   catch(err){
     return helper.fail(err);
@@ -37,7 +36,5 @@ module.exports = async function (helper) {
 
 
 
-  // The way we usually write validators is to fail fast, and then if we reach
-  // the end, we know the user got all the answers right!
-  helper.success(`Hooray! You did it!`,[{ name: "GITHUB_CLONE_PATH_ICE_10_CLASSROOM", value: answer2 }]);
+
 };

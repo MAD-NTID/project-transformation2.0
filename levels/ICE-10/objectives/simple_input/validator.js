@@ -24,14 +24,14 @@ module.exports = async function (helper) {
 
   //attempt to compile the project
   try{
-    let project = await projectInfo(parentFolder, projectName)
+    let project = await projectInfo(parentFolder, projectName);
     let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 20, "The program timed out while testing",["Kemoy Campbell", 20]));
 
     if(!stdout.includes("Kemoy Campbell") || !stdout.includes("Hello"))
-      return helper.fail("Your program must show Hello <the name that was entered>");
+      return helper.fail(`Your program must show Hello \n<the name that was entered>`);
 
     if(!stdout.includes('You are 20 and in 5 years time you will be 25'))
-      return helper.fail("Your program didnt correctly display You are <age> and in 5 years time you will be <age in 5 years time>. Check your space and calculation");
+      return helper.fail(`Your program didnt correctly display \nYou are <age> and in 5 years time you will be \n<age in 5 years time>. Check your space and calculation`);
 
   }catch(err){
     return helper.fail(err.message);

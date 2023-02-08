@@ -2,7 +2,7 @@ class TimedoutError extends Error
 {
     constructor(message) {
         super(`${message}`);
-        Error.captureStackTrace(this, TimedOutError);
+        Error.captureStackTrace(this, TimedoutError);
     }
 }
 

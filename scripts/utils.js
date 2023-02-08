@@ -6,7 +6,7 @@ const {TestOutputError} = require('./testoutput.error');
 const fs = require('fs');
 const pathLib = require("path");
 const {default: axios} = require("axios");
-const os = require('node:os');
+const os = require('os');
 
 let error = "";
 
