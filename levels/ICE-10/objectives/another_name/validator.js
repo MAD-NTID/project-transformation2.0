@@ -20,7 +20,7 @@ module.exports = async function (helper) {
   if(!answer1)
     return helper.fail("Please answer question #1");
 
-  if(!["conditional", "condition", "conditions", "conditionals", "decision", "decisions"].includes(answer1.toLowerCase()))
+  if(!["conditional", "condition", "conditions", "conditionals", "decision", "decisions","branch","branching"].includes(answer1.toLowerCase()))
     return helper.fail("Incorrect answer for question #1");
 
   if(!answer2 || answer2.toLowerCase()!=='true')

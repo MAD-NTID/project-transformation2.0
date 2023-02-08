@@ -3,8 +3,9 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const {isFolderExist, dotnet} = require("../../../ICE-04/objectives/lib/utility");
-const path = require("path");
+
+const { normalizeLineEndings, projectInfo, dotnet } = require("../../../../scripts/utils");
+
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -21,18 +22,28 @@ module.exports = async function (helper) {
   let projectName = 'PasswordDecision'
   let parentFolder = helper.env.TQ_GITHUB_CLONE_PATH_ICE_10_CLASSROOM;
 
-  let project = path.resolve(parentFolder, projectName);
 
-
-  //attempt to compile the project
+    //attempt to compile the project
   try{
-    //does the project exist?
-    isFolderExist(project);
-    await dotnet(`build ${project}`); //compile
+
+    let project = await projectInfo(parentFolder, projectName);
+    let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["tony", "jarvisTheBestAI!"]));
+
+    //testing successful password
+    if(!stdout.includes("Welcome Tony Stark!"))
+      return helper.fail("You must print Welcome Tony Stark! on successful login");
+
+    //testing invalid username and password
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["tony", "jarvisTheBestAI3333"]));
+
+    if(!stdout.includes("Incorrect username or password!"))
+      return helper.fail("You must print Incorrect username or password! if the user enter the incorrect username or password");
 
   }catch(err){
-    return helper.fail(err);
+    return helper.fail(err.message);
   }
+
+
 
 
   // The way we usually write validators is to fail fast, and then if we reach

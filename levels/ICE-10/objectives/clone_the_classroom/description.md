@@ -8,7 +8,7 @@ Before proceeding with the ICE, create a new repository from GitHub Classroom th
 ## Steps:
 1. Open the terminal
 2. cd into your prefer locations, eg. Desktop, PF1 or any other location where you prefer to store this assignment
-3. [Accept the Github Classroom Invitation](https://classroom.github.com/a/ky8WRcst)
+3. [Accept the Github Classroom Invitation](https://classroom.github.com/a/ei1XAp9R)
 4. Wait a for a 10 seconds after you clicked on accepted the classroom
 5. Refresh
 6. Copy and the link that appears on screen after you refreshed

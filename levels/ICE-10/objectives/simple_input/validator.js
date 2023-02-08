@@ -3,9 +3,8 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const {isFolderExist, dotnet, dotnetExecutionBinary} = require("../../../ICE-04/objectives/lib/utility");
-const {spawn} = require("child_process");
-const path = require('path');
+
+const { projectInfo, dotnet, normalizeLineEndings, testOutput } = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -21,18 +20,21 @@ module.exports = async function (helper) {
   const { answer1} = helper.validationFields;
   let projectName = 'SimpleInputs'
   let parentFolder = helper.env.TQ_GITHUB_CLONE_PATH_ICE_10_CLASSROOM;
-  let project = path.resolve(parentFolder,projectName);
-  console.log(project);
 
 
   //attempt to compile the project
   try{
-    //does the project exist?
-    isFolderExist(project);
-    await dotnet(`build ${project}`); //compile
+    let project = await projectInfo(parentFolder, projectName);
+    let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 20, "The program timed out while testing",["Kemoy Campbell", 20]));
+
+    if(!stdout.includes("Kemoy Campbell") || !stdout.includes("Hello"))
+      return helper.fail(`Your program must show Hello \n<the name that was entered>`);
+
+    if(!stdout.includes('You are 20 and in 5 years time you will be 25'))
+      return helper.fail(`Your program didnt correctly display \nYou are <age> and in 5 years time you will be \n<age in 5 years time>. Check your space and calculation`);
 
   }catch(err){
-    return helper.fail(err);
+    return helper.fail(err.message);
   }
 
   // //interact with the program
