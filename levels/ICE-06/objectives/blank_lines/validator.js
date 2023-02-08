@@ -5,7 +5,8 @@ Node.js module (since that's what this is!)
 */
 const path = require('path');
 const fs = require('fs');
-const {readFile, normalizeLineEndings, dotnet} = require("../../../../scripts/utils");
+const {readFile, normalizeLineEndings, dotnet, projectInfo} = require("../../../../scripts/utils");
+const { Console } = require('console');
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -28,19 +29,15 @@ module.exports = async function (helper) {
     return helper.fail('You need to complete the create a new project step first!');
   }
 
-  let fullPath= path.join(helper.env.TQ_GETTING_START_PATH, "Program.cs");
-  let project = helper.env.TQ_GETTING_START_PATH;
+
   let fullName = helper.env.TQ_FULL_NAME.split(" ");
   let hometown = helper.env.TQ_HOME_TOWN;
 
 
   try {
-
-    if(!fs.existsSync(fullPath)){
-      return helper.fail('Project is not setup correctly. Missing Program.cs?');
-    }
+    let project = await projectInfo(helper.env.TQ_GETTING_START_PATH);
     //reading the file data
-    const data = normalizeLineEndings(await readFile(fullPath));
+    const data = project.programContent;
     if(data.length === 0)
       return helper.fail("Program.cs cannot be empty!");
 
@@ -49,7 +46,13 @@ module.exports = async function (helper) {
 
     //attempting to run the project
 
-    const stdout = await dotnet(`run --project "${project}"`, 15, "The program timed out while attempting to run your project with dotnet run");
+    const stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 15, "The program timed out while attempting to run your project with dotnet run"));
+
+    let lines = stdout.split("\n");
+
+    if(lines.length < 3) {
+      return helper.fail("You need to have at least 3 blank lines in your program!");
+    }
 
     if(!stdout.includes("Hello Nerds/Geeks!!--- I'm"))
       return helper.fail("Hello Nerds/Geeks!!--- I'm is missing from the console! please check the objective menu and try again");

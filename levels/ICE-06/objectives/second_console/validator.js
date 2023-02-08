@@ -8,7 +8,7 @@ const { isTwilio } = require("../lib/example_helper");
 const {exec} = require("child_process");
 const path = require('path');
 const fs = require('fs');
-const {cleanPath, normalizeLineEndings, readFile, dotnet} = require("../../../../scripts/utils");
+const {cleanPath, normalizeLineEndings, readFile, dotnet, projectInfo} = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -36,25 +36,23 @@ module.exports = async function (helper) {
     return helper.fail('You need to complete the create a new project step first!');
   }
 
-  let fullPath= path.join(helper.env.TQ_GETTING_START_PATH, "Program.cs");
-  let project = helper.env.TQ_GETTING_START_PATH;
+
   let fullName = helper.env.TQ_FULL_NAME.split(" ");
 
 
 
   try {
 
-    if(!fs.existsSync(fullPath)){
-      return helper.fail('Project is not setup correctly. Missing Program.cs?');
-    }
+    let project = await projectInfo(helper.env.TQ_GETTING_START_PATH);
+
     //reading the file data
-    const data = normalizeLineEndings(await readFile(fullPath));
+    const data = project.programContent;
     if(data.length === 0)
       return helper.fail("Program.cs cannot be empty!");
 
     //attempting to run the project
 
-    const stdout = await dotnet(`run --project "${project}"`, 15, "The program timed out while attempting to run your project with dotnet run");
+    const stdout = await dotnet(`run --project ${project.project}`, 15, "The program timed out while attempting to run your project with dotnet run");
 
     if(!stdout.includes("Hello Nerds/Geeks!!--- I'm"))
       return helper.fail("Hello Nerds/Geeks!!--- I'm is missing from the console! please check the objective menu and try again");
@@ -80,9 +78,6 @@ module.exports = async function (helper) {
     return helper.fail(e.message);
   }
 
-  if(!fs.existsSync(fullPath)){
-    return helper.fail('Incorrect-> Cannot find Program.cs in WorkingWithVisualStudioCode');
-  }
 
 
 

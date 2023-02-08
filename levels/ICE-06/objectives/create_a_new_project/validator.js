@@ -8,7 +8,7 @@ const { isTwilio } = require("../lib/example_helper");
 const {exec} = require("child_process");
 const path = require('path');
 const fs = require('fs');
-const {cleanPath, readFile, normalizeLineEndings, dotnet} = require("../../../../scripts/utils");
+const {cleanPath, readFile, normalizeLineEndings, dotnet, projectInfo} = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -43,19 +43,16 @@ module.exports = async function (helper) {
   }
 
   try {
-    let project = cleanPath(answer2);
-    let fullPath = path.join(project,"Program.cs");
-    if(!fs.existsSync(fullPath)){
-      return helper.fail('Project is not setup correctly. Missing Program.cs?');
-    }
+    let project = await projectInfo(answer2);
+
     //reading the file data
-    const data = normalizeLineEndings(await readFile(fullPath));
+    const data = project.programContent;
     if(data.length === 0)
       return helper.fail("Program.cs cannot be empty!");
 
-    //attempting to run the project
 
-    const stdout = await dotnet(`run --project "${project}"`, 15, "The program timed out while attempting to run your project with dotnet run");
+
+    const stdout = await dotnet(`run --project ${project.project}`, 15, "The program timed out while attempting to run your project with dotnet run");
 
     if(!stdout.includes("Hello Nerds/Geeks!!--- I'm"))
       return helper.fail("Hello Nerds/Geeks!!--- I'm is missing from the console! please check the objective menu and try again");
@@ -71,7 +68,7 @@ module.exports = async function (helper) {
     if(!stdout.includes(fullName[0]) || !stdout.includes(fullName[1]))
       return helper.fail("You must include you first and last name in the console. Check the objective menu for the sample output and try again");
 
-    helper.success(`Hooray! You did it!`,  [{ name: "GETTING_START_PATH", value: project },{name:"FULL_NAME", value:answer0}]);
+    helper.success(`Hooray! You did it!`,  [{ name: "GETTING_START_PATH", value: cleanPath(project.project)},{name:"FULL_NAME", value:answer0}]);
 
   }catch(e)
   {

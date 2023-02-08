@@ -34,11 +34,13 @@ function cleanPath(path){
     if(!path)
         path = '';
 
+    path = path.replace(/"/g, '');
+
 
     //convert path to appropriate windows path as virtual path from git bash doesnt always work
     if(isWindows() && (path.includes('/c/') || path.includes('/d/')))
     {
-       path = `${path.substring(1,2)}:/${path.substring(3)}`;
+       path = `${path.substring(path.indexOf('/c/')+1,2)}:/${path.substring(3)}`;
        path = path.split(pathLib.sep).join(pathLib.win32.sep);
     }
 
@@ -230,7 +232,7 @@ async function dotnet(command, timeout, timeoutMessage, inputs = [], cwd = undef
     let dotnet = 'dotnet ';
     if(isMAC())
         dotnet = '/usr/local/share/dotnet/dotnet ';
-    return runProcess(`${dotnet} ${command}`, timeout, timeoutMessage, inputs, cwd)
+    return runProcess(`DOTNET_CLI_HOME=/tmp/ ${dotnet} ${command}`, timeout, timeoutMessage, inputs, cwd)
 }
 
 async function git(command, timeout = 15)
@@ -240,7 +242,7 @@ async function git(command, timeout = 15)
 
 async function readFile(path)
 {
-    return await  fs.promises.readFile(path, 'utf-8');
+    return normalizeLineEndings(await fs.promises.readFile(path, 'utf-8'));
 }
 
 async function projectInfo(parentFolder, projectName = "default")
@@ -250,8 +252,14 @@ async function projectInfo(parentFolder, projectName = "default")
 
     if(!projectName || projectName.length === 0)
         throw new Error("Project name cannot be empty");
+    
+    let project = "";
+    
+    if (projectName === "default")
+        project = cleanPath(parentFolder);
+    else
+        project = cleanPath(pathLib.join(parentFolder,projectName));
 
-    let project = pathLib.resolve(cleanPath(parentFolder), projectName === "default" ? "": projectName);
     let programPath = pathLib.resolve(project, 'Program.cs');
 
 
@@ -259,7 +267,7 @@ async function projectInfo(parentFolder, projectName = "default")
 
     return {
         parent:parentFolder,
-        project:project,
+        project:`"${project}"`,
         programPath:programPath,
         programContent: programFileContent
     }

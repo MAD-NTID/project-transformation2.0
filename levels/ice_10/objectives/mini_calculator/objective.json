@@ -1,0 +1,15 @@
+{
+  "title": "Part 3 - Mini Calculator",
+  "description": "Building a mini calculator",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you complete the objective?"
+    }
+  ],
+  "rewards": {
+    "xp": 1000
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "title": "Logical operators",
+  "description": "Mastering the logical operators",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "1. What logical operator requires all condition to be true?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "2. What logical operator require at least one of the conditions to be true?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "3. What is the logical operator symbol for equals to?"
+    },  {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "4. What is the logical operator symbol for not equal to?"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "5. What is the logical symbol for not/negate?"
+    },  {
+      "name": "answer6",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "6. What is the result of the following logical operator? <br/>  (5 > 3) && (1 < 2) && (2!=3) && !(3 > 5)"
+    }
+  ],
+  "rewards": {
+    "xp": 300
+  }
+}
