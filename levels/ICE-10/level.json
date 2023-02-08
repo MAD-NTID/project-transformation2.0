@@ -4,7 +4,7 @@
   "questTitle": "If Else Training",
   "questDescription": "Decision is of the most fundamental component of programming. In this lesson, you will master the basics of decisions",
   "mission_icon": "ifelse.png",
-  "is_mission": false,
+  "is_mission": true,
   "priority": 10,
   "backgroundMusic": "hackertheme_104771b",
   "backgroundEffect": {

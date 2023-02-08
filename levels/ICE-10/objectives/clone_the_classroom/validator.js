@@ -3,9 +3,8 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const assert = require("assert");
-const R = require("ramda");
-const {checkGithubUsername, isFolderExist, git} = require("../../../github/objectives/lib/utility");
+
+const { cleanPath,checkGithubUsername, git } = require("../../../../scripts/utils");
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -28,8 +27,8 @@ module.exports = async function (helper) {
   }
 
   try{
-    isFolderExist(answer2);
-    await git(`-C ${answer2} status`)
+    cleanPath(answer2);
+    await git(`-C "${answer2}" status`, 15)
   }
   catch(err){
     return helper.fail(err);

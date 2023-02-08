@@ -5,6 +5,8 @@ const {TestCaseError} = require("./testcase.error");
 const {TestOutputError} = require('./testoutput.error');
 const fs = require('fs');
 const pathLib = require("path");
+const {default: axios} = require("axios");
+const os = require('node:os');
 
 let error = "";
 
@@ -273,6 +275,26 @@ async function projectInfo(parentFolder, projectName = "default")
     }
 }
 
+async function checkGithubUsername(username)
+{
+    if(!username)
+        throw "Please provide your github username";
+
+
+    try{
+        const response = await axios.get(`https://api.github.com/users/${username}`);
+        if(response.status===200)
+            return true;
+
+        throw `We couldn't find the GitHub user, ${username}. Is there a typo in the username?`;
+    }catch(err){
+        if(err.response.status===404)
+            throw `We couldn't find the GitHub user, ${username}. Is there a typo in the username? Make sure you sign up for github, verified your email before entering it in the box here`;
+        throw err;
+    }
+
+}
+
 module.exports = {
     git,
     normalizeLineEndings,
@@ -286,6 +308,7 @@ module.exports = {
     readFile,
     isMAC,
     isWindows,
-    projectInfo
+    projectInfo,
+    checkGithubUsername
 };
 
