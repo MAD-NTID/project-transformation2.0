@@ -38,14 +38,18 @@ function cleanPath(path){
 
     path = path.replace(/"/g, '');
 
+    console.log(path);
+
 
     //convert path to appropriate windows path as virtual path from git bash doesnt always work
     if(isWindows() && (path.includes('/c/') || path.includes('/d/')))
     {
        path = `${path.substring(path.indexOf('/c/')+1,2)}:/${path.substring(3)}`;
        path = path.split(pathLib.sep).join(pathLib.win32.sep);
-    }
 
+       console.log(path)
+    }
+    
     //add double quote around the path to escape spacing issue
 
     if(!fs.existsSync(path))
@@ -255,11 +259,10 @@ async function projectInfo(parentFolder, projectName = "default")
     if(!projectName || projectName.length === 0)
         throw new Error("Project name cannot be empty");
     
-    let project = "";
     
-    if (projectName === "default")
-        project = cleanPath(parentFolder);
-    else
+    parentFolder = cleanPath(parentFolder);
+    let project = parentFolder;
+    if(projectName!=="default")
         project = cleanPath(pathLib.join(parentFolder,projectName));
 
     let programPath = pathLib.resolve(project, 'Program.cs');
