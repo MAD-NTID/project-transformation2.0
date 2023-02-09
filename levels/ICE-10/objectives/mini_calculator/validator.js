@@ -52,7 +52,7 @@ module.exports = async function (helper) {
     if(!stdout.includes("*") || !stdout.includes("15"))
       return helper.fail("Your multiply code is incorrect!");
     
-    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,20,2]));
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,20,2]));
     if(!stdout.includes("/") || !stdout.includes("10"))
       return helper.fail("Your divide code is incorrect");
 
