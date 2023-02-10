@@ -3,11 +3,9 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const assert = require("assert");
-const R = require("ramda");
-const { isTwilio } = require("../lib/example_helper");
-const {isFolderExist, dotnet, readFileAsync} = require("../../../github/objectives/lib/utility");
-const path = require("path");
+
+const { normalizeLineEndings, projectInfo, dotnet, testOutput } = require("../../../../scripts/utils");
+
 /*
 Objective validators export a single function, which is passed a helper
 object. The helper object contains information passed in from the game UI,
@@ -23,28 +21,54 @@ module.exports = async function (helper) {
 
   let projectName = 'MiniCalculator'
   let parentFolder = helper.env.TQ_GITHUB_CLONE_PATH_ICE_11_CLASSROOM;
-  let project =  path.resolve(parentFolder, projectName);
+  let project =  projectInfo(parentFolder, projectName);
 
+  let data = await project.programContent;
+  let acceptables = ["const", "ADD", "SUB", "MUL", "DIV"];
 
-  //attempt to compile the project
-  try{
-    //does the project exist?
-    isFolderExist(project);
-    let data = await readFileAsync(path.resolve(project,"Program.cs"));
-    if(!data.includes("int.TryParse") && !data.includes("double.TryParse"))
-      return helper.fail("are you forgetting TryParse?");
-    let acceptables = ["const", "ADD", "SUB", "MUL", "DIV"];
-
-    for(let i = 0; i< acceptables.length; i++){
-      if(!data.includes(acceptables[i]))
-        return helper.fail("Are you forgetting something? hint: "+ acceptables[i]);
-    }
-     
-    await dotnet(`build ${project}`); //compile
-
-  }catch(err){
-    return helper.fail(err);
+  for(let i = 0; i< acceptables.length; i++){
+    if(!data.includes(acceptables[i]))
+      return helper.fail("Are you forgetting something? hint: "+ acceptables[i]);
   }
+
+  //testing invalid options
+  let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["",2,7]));
+  testOutput("Test invalid choice", stdout, "Invalid choice!!!", "included", true);
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,"",7]));
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,""]));
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,"",7]));
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,""]));
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,"",7]));
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,2,""]));
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,"",7]));
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,2,0]));
+
+
+  //valid actions
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,7]));
+
+  if(!stdout.includes("+") || !stdout.includes("9"))
+    return helper.fail("Your add code is incorrect!");
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,7]));
+  if(!stdout.includes("-") ||!stdout.includes("5"))
+    return helper.fail("Your subtract code is incorrect");
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,3,5]));
+
+  if(!stdout.includes("*") || !stdout.includes("15"))
+    return helper.fail("Your multiply code is incorrect!");
+
+  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,20,2]));
+  if(!stdout.includes("/") || !stdout.includes("10"))
+    return helper.fail("Your divide code is incorrect");
+
+
+
+
 
 
 

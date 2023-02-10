@@ -30,8 +30,8 @@ module.exports = async function (helper) {
     let project = await projectInfo(parentFolder, projectName);
 
     let data = await project.programContent;
-    if(!data.includes("int.TryParse") && !data.includes("double.TryParse"))
-    return helper.fail("are you forgetting TryParse?");
+    if(!data.includes("int.Parse") && !data.includes("double.Parse"))
+    return helper.fail("are you forgetting Int.Parse?");
     let acceptables = ["const", "ADD", "SUB", "MUL", "DIV"];
 
     for(let i = 0; i< acceptables.length; i++){

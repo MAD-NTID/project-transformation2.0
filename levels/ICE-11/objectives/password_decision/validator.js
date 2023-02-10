@@ -3,11 +3,8 @@ In your validation code, you can require core Node.js modules,
 third-party modules from npm, or your own code, just like a regular
 Node.js module (since that's what this is!)
 */
-const assert = require("assert");
-const R = require("ramda");
-const { isTwilio } = require("../lib/example_helper");
-const {isFolderExist, dotnet, readFileAsync} = require("../../../github/objectives/lib/utility");
-const path = require("path");
+const { normalizeLineEndings, projectInfo, dotnet, testOutput } = require("../../../../scripts/utils");
+
 
 /*
 Objective validators export a single function, which is passed a helper
@@ -24,22 +21,32 @@ module.exports = async function (helper) {
   let projectName = 'PasswordDecision'
   let parentFolder = helper.env.TQ_GITHUB_CLONE_PATH_ICE_11_CLASSROOM;
 
-  let project = path.resolve(parentFolder, projectName);
+  
 
-
-  //attempt to compile the project
   try{
-    //does the project exist?
-    isFolderExist(project);
-    let data = await readFileAsync(path.resolve(project,"Program.cs"));
-    if(!data.includes("int.TryParse"))
-      return helper.fail("Are you forgetting a try parse?")
-    await dotnet(`build ${project}`); //compile
+
+    //checking for const int
+    let project = await projectInfo(parentFolder, projectName);
+    await testOutput("Testing for constant with an int type", project.programContent, "const int", "included");
+
+    //testing with an invalid input, aka password is not a number
+    //if the student dont handle with try parse, dotnet will throw the exception
+    let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["tony", "jarvisTheBestAI!"]));
+
+    await testOutput("Testing display Password must be a digit when the user enter a non digit for the password", stdout, "Password must be a digit", "included");
+
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["tony", "124687"]));
+
+    await testOutput("Testing Welcome Tony Stark", stdout, "Welcome Tony Stark!", "included");
+
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["tony", "1246879999"]));
+
+    await testOutput("Testing incorrect username or password", stdout, "Incorrect username or password!","included");
+
 
   }catch(err){
     return helper.fail(err);
   }
-
 
   // The way we usually write validators is to fail fast, and then if we reach
   // the end, we know the user got all the answers right!

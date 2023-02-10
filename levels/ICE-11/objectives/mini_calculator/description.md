@@ -32,7 +32,7 @@ Steps:
 - Multiply
 - Divide
 
-Eg. ```const ADD = 1;```
+Eg. ```const int ADD = 1;```
 
 4. Display the following menu on screen to the user
 ```

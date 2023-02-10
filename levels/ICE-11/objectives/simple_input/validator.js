@@ -44,6 +44,7 @@ module.exports = async function (helper) {
     stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 20, "The program timed out while testing",["Kemoy Campbell", "notAnNumber"]));
 
     await testOutput("Testing You must enter a number for age! when the input is not a number", stdout, "You must enter a number for age!", "included");
+    await testOutput("Must not show age info when the user enter a non digit age", stdout, "You are 0 and in 5 years time you will be 5", "notIncluded");
 
   }catch(err){
     return helper.fail(err);
