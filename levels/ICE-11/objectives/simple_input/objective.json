@@ -1,0 +1,15 @@
+{
+  "title": "Part 1 - Simple Input",
+  "description": "Working with inputs",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "Did you complete the objective?"
+    }
+  ],
+  "rewards": {
+    "xp": 150
+  }
+}

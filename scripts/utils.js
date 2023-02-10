@@ -206,25 +206,25 @@ const testOutput = async (test, actual,expected,comparison,caseInSensitive=false
         {
             case 'exact':
                 if(expected!==actual)
-                    reject(new TestOutputError(`The output for test ${test} didn't match `, expected, actual, comparison, caseInSensitive))
+                    reject(new TestOutputError(`The test ${test} didn't match `, expected, actual, comparison, caseInSensitive))
                 break;
 
             case 'regex':
 
                 let regex = new RegExp(expected || '');
                 if(!actual.match(regex))
-                    reject(new TestOutputError(`The output for test ${test} didn't match the regex`, expected, actual, comparison, caseInSensitive))
+                    reject(new TestOutputError(`The for test ${test} didn't match the regex`, expected, actual, comparison, caseInSensitive))
                 break;
 
             case 'included':
                 if(!actual.includes(expected))
-                    reject(new TestOutputError(`The output for test ${test} didn't match`, expected, actual , comparison, caseInSensitive))
+                    reject(new TestOutputError(`The for test ${test} didn't match`, expected, actual , comparison, caseInSensitive))
                 break;
 
             //The default comparison mode is 'notIncluded'
             default:
                 if(actual.includes(expected))
-                    reject(new TestOutputError(`The output for test ${test} didn't match `, `expected to not included ${expected}`, actual,comparison, caseInSensitive))
+                    reject(new TestOutputError(`The for test ${test} didn't match `, `expected to not included ${expected}`, actual,comparison, caseInSensitive))
                 break;
         }
 

@@ -1,0 +1,18 @@
+{
+  "title": "11- Decision and int error handling",
+  "description": "Working with Decisions and int error handling",
+  "questTitle": "If Else Training and try parse input handling",
+  "questDescription": "Decision and error handling is of the most fundamental component of programming. In this lesson, you will master the basics of decisions",
+  "mission_icon": "tryparse.png",
+  "is_mission": true,
+  "priority": 11,
+  "backgroundMusic": "hackertheme_104771b",
+  "backgroundEffect": {
+    "key": "vr",
+    "options": {}
+  },
+  "flavorTextOverrides": {
+    "bookshelf": "There's nothing like a good book."
+  },
+  "objectives": ["clone_the_classroom","instructor_sign_off", "mini_calculator","password_decision","simple_input","recap"]
+}

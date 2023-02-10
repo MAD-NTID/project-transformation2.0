@@ -1,0 +1,46 @@
+{
+  "title": "Review",
+  "description": "Testing your understanding of the basic concepts",
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "\\#1. Try Parse evaluate whether a string is able to convert into a specific type"
+    },
+    {
+      "name": "answer2",
+      "type": "number",
+      "placeholder": "type your answer here",
+      "label": "\\#2. How many parameters do you need to supply to a try parse method?"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "\\#3. What data type does a try parse method returns?"
+    },
+    {
+      "name": "answer4",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "\\#4. If a try parse method is able to convert an object into the specific type, it returns __________"
+    },
+    {
+      "name": "answer5",
+      "type": "text",
+      "placeholder": "type your answer here",
+      "label": "\\#5. What technique allows you to use $ inside the Console.Write(Line)?"
+    },
+    {
+      "name": "answer6",
+      "type": "boolean",
+      "placeholder": "type your answer here",
+      "label": "\\#6. The technique with $ answered in question #5 also allows you to specific the format such as using C for currency and D for whole number"
+    }
+    
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
