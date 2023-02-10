@@ -21,50 +21,58 @@ module.exports = async function (helper) {
 
   let projectName = 'MiniCalculator'
   let parentFolder = helper.env.TQ_GITHUB_CLONE_PATH_ICE_11_CLASSROOM;
-  let project =  projectInfo(parentFolder, projectName);
 
-  let data = await project.programContent;
-  let acceptables = ["const", "ADD", "SUB", "MUL", "DIV"];
+  try{
+    let project =  await projectInfo(parentFolder, projectName);
 
-  for(let i = 0; i< acceptables.length; i++){
-    if(!data.includes(acceptables[i]))
-      return helper.fail("Are you forgetting something? hint: "+ acceptables[i]);
+    let data = project.programContent;
+    let acceptables = ["const", "ADD", "SUB", "MUL", "DIV"];
+  
+    for(let i = 0; i< acceptables.length; i++){
+      if(!data.includes(acceptables[i]))
+        return helper.fail("Are you forgetting something? hint: "+ acceptables[i]);
+    }
+  
+    //testing invalid options
+    let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["",2,7]));
+    await testOutput("Test invalid choice", stdout, "Invalid choice!!!", "included", true);
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,"",7]));
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,""]));
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,"",7]));
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,""]));
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,"",7]));
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,2,""]));
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,"",7]));
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,2,0]));
+  
+  
+    //valid actions
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,7]));
+  
+    if(!stdout.includes("+") || !stdout.includes("9"))
+      return helper.fail("Your add code is incorrect!");
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,7]));
+    if(!stdout.includes("-") ||!stdout.includes("5"))
+      return helper.fail("Your subtract code is incorrect");
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,3,5]));
+  
+    if(!stdout.includes("*") || !stdout.includes("15"))
+      return helper.fail("Your multiply code is incorrect!");
+  
+    stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,20,2]));
+    if(!stdout.includes("/") || !stdout.includes("10"))
+      return helper.fail("Your divide code is incorrect");
+
+  }catch(e)
+  {
+    return helper.fail(e.message);
   }
 
-  //testing invalid options
-  let stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",["",2,7]));
-  testOutput("Test invalid choice", stdout, "Invalid choice!!!", "included", true);
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,"",7]));
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,""]));
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,"",7]));
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,""]));
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,"",7]));
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,2,""]));
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,"",7]));
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,2,0]));
-
-
-  //valid actions
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[1,2,7]));
-
-  if(!stdout.includes("+") || !stdout.includes("9"))
-    return helper.fail("Your add code is incorrect!");
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[2,2,7]));
-  if(!stdout.includes("-") ||!stdout.includes("5"))
-    return helper.fail("Your subtract code is incorrect");
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[3,3,5]));
-
-  if(!stdout.includes("*") || !stdout.includes("15"))
-    return helper.fail("Your multiply code is incorrect!");
-
-  stdout = normalizeLineEndings(await dotnet(`run --project ${project.project}`, 25, "The program timed out while testing",[4,20,2]));
-  if(!stdout.includes("/") || !stdout.includes("10"))
-    return helper.fail("Your divide code is incorrect");
 
 
 
