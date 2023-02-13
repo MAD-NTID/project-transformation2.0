@@ -4,7 +4,7 @@
   "validation_fields": [
     {
       "name": "answer1",
-      "type": "text",
+      "type": "password",
       "placeholder": "type your answer here",
       "label": "Instructor signature secret"
     }
